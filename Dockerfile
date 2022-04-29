@@ -20,7 +20,7 @@ FROM ubuntu:jammy
 #Install .net runtime
 RUN apt-get update \
   && apt-get install wget \
-  && wget https://dot.net/v1/dotnet-install.sh
+  && wget https://dot.net/v1/dotnet-install.sh \
   && ./dotnet-install.sh -c 6.0 --runtime aspnetcore
 
 WORKDIR /app
