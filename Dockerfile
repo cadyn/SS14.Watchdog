@@ -16,14 +16,6 @@ RUN dotnet publish -c release -r linux-x64 -o /app --no-self-contained --no-rest
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 
-#dependencies
-#RUN apt-get update \
-#  && apt-get install -y apt-transport-https dirmngr gnupg ca-certificates \
-#  && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
-#  && echo "deb https://download.mono-project.com/repo/debian stable-buster main" | tee /etc/apt/sources.list.d/mono-official-stable.list \
-#  && apt-get update \
-#  && apt-get install -y mono-complete
-
 WORKDIR /app
 COPY --from=build /app ./SS14.Watchdog/bin/Release/net6.0/linux-x64/publish
 RUN mv SS14.Watchdog/bin/Release/net6.0/linux-x64/publish ./ \
@@ -37,5 +29,5 @@ EXPOSE 1212
 
 VOLUME ["/app/appsettings.yml", "/app/instances"]
 
-ENTRYPOINT ["/app/SS14.Watchdog"]
-#ENTRYPOINT ["dotnet", "SS14.Watchdog.dll"]
+#ENTRYPOINT ["/app/SS14.Watchdog"]
+ENTRYPOINT ["dotnet", "SS14.Watchdog.dll"]
