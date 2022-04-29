@@ -21,6 +21,7 @@ FROM ubuntu:jammy
 RUN apt-get update \
   && apt-get install -y wget \
   && wget https://dot.net/v1/dotnet-install.sh \
+  && chmod +x dotnet-install.sh \
   && ./dotnet-install.sh -c 6.0 --runtime aspnetcore
 
 WORKDIR /app
