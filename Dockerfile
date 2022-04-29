@@ -28,5 +28,5 @@ EXPOSE 1212
 
 VOLUME ["/app/appsettings.yml", "/app/instances"]
 
-ENTRYPOINT ["SS14.Watchdog"]
+ENTRYPOINT ["/app/SS14.Watchdog"]
 #ENTRYPOINT ["dotnet", "SS14.Watchdog.dll"]
