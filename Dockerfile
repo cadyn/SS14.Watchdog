@@ -10,7 +10,7 @@ RUN dotnet restore
 # copy everything else and build app
 COPY SS14.Watchdog/. ./SS14.Watchdog/
 COPY SS14.Watchdog.Tests/. ./SS14.Watchdog.Tests/
-WORKDIR /source/SS14.Watchdog/
+#WORKDIR /source/SS14.Watchdog/
 RUN dotnet publish -c release -r linux-x64 -o /app --self-contained --no-restore
 
 # final stage/image
