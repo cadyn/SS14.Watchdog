@@ -14,7 +14,8 @@ COPY SS14.Watchdog.Tests/. ./SS14.Watchdog.Tests/
 RUN dotnet publish -c release -r linux-x64 -o /app --no-self-contained --no-restore
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
+#FROM mcr.microsoft.com/dotnet/aspnet:6.0
+FROM mcr.microsoft.com/dotnet/sdk:6.0
 
 WORKDIR /app
 COPY --from=build /app ./SS14.Watchdog/bin/Release/net6.0/linux-x64/publish
