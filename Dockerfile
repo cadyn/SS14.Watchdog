@@ -16,7 +16,7 @@ RUN dotnet publish -c release -r linux-x64 -o /app --no-self-contained --no-rest
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
-COPY --from=build /app ./
+COPY --from=build /app ./SS14.Watchdog/bin/Release/net6.0/linux-x64/publish
 RUN rm -rf /app/appsettings.yml
 
 EXPOSE 5000
