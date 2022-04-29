@@ -14,7 +14,7 @@ COPY SS14.Watchdog.Tests/. ./SS14.Watchdog.Tests/
 RUN dotnet publish -c release -r ubuntu.20.04-x64 -o /app --no-self-contained --no-restore
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:6.0.4-focal
+FROM mcr.microsoft.com/dotnet/aspnet:6.0.2-focal
 #FROM mcr.microsoft.com/dotnet/sdk:6.0
 
 WORKDIR /app
