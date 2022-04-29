@@ -19,13 +19,13 @@ FROM ubuntu:jammy
 
 #Install .net runtime
 RUN apt-get update \
-  && apt-get install wget \
+  && apt-get install -y wget \
   && wget https://dot.net/v1/dotnet-install.sh \
   && ./dotnet-install.sh -c 6.0 --runtime aspnetcore
 
 WORKDIR /app
-COPY --from=build /app ./SS14.Watchdog/bin/Release/net6.0/ubuntu.20.04-x64/publish
-RUN mv SS14.Watchdog/bin/Release/net6.0/ubuntu.20.04-x64/publish ./ \
+COPY --from=build /app ./SS14.Watchdog/bin/Release/net6.0/ubuntu.22.04-x64/publish
+RUN mv SS14.Watchdog/bin/Release/net6.0/ubuntu.22.04-x64/publish ./ \
   && rm -rf SS14.Watchdog \
   && mv publish/* ./ \
   && rm -rf publish \
