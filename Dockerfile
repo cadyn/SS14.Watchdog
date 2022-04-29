@@ -19,7 +19,7 @@ FROM ubuntu:jammy
 
 #Install .net runtime
 RUN apt-get update \
-  && apt-get install -y wget \
+  && apt-get install -y wget libc6 libgcc1 libgssapi-krb5-2 libicu70 libssl3 libstdc++6 zlib1g \
   && wget https://dot.net/v1/dotnet-install.sh \
   && chmod +x dotnet-install.sh \
   && ./dotnet-install.sh -c 6.0 --runtime aspnetcore
