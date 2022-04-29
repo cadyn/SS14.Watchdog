@@ -5,7 +5,7 @@ WORKDIR /source
 COPY *.sln .
 COPY SS14.Watchdog/*.csproj ./SS14.Watchdog/
 COPY SS14.Watchdog.Tests/*.csproj ./SS14.Watchdog.Tests/
-RUN dotnet restore
+RUN dotnet restore -r linux-x64 --self-contained
 
 # copy everything else and build app
 COPY SS14.Watchdog/. ./SS14.Watchdog/
