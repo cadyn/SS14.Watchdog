@@ -17,4 +17,8 @@ RUN dotnet publish -c release -r linux-x64 -o /app --no-self-contained --no-rest
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=build /app ./
+
+EXPOSE 5000
+EXPOSE 1212
+
 ENTRYPOINT ["dotnet", "SS14.Watchdog.dll"]
