@@ -22,7 +22,7 @@ RUN apt-get update \
   && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
   && echo "deb https://download.mono-project.com/repo/debian stable-buster main" | tee /etc/apt/sources.list.d/mono-official-stable.list \
   && apt-get update \
-  && apt-get install -y mono-xsp4
+  && apt-get install -y mono-complete
 
 WORKDIR /app
 COPY --from=build /app ./SS14.Watchdog/bin/Release/net6.0/linux-x64/publish
@@ -31,8 +31,6 @@ RUN mv SS14.Watchdog/bin/Release/net6.0/linux-x64/publish ./ \
   && mv publish/* ./ \
   && rm -rf publish \
   && rm -rf /app/appsettings.yml
-
-RUN apt-get install mono-xsp4
 
 EXPOSE 5000
 EXPOSE 1212
