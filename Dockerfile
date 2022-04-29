@@ -36,6 +36,7 @@ EXPOSE 5000
 EXPOSE 1212
 
 ENV DOTNET_ROOT /root/.dotnet
+ENV PATH="/root/.dotnet:/app:${PATH}"
 
 VOLUME ["/app/appsettings.yml", "/app/instances"]
 
