@@ -17,6 +17,10 @@ RUN dotnet publish -c release -r linux-x64 -o /app --no-self-contained --no-rest
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=build /app ./SS14.Watchdog/bin/Release/net6.0/linux-x64/publish
+RUN mv SS14.Watchdog/bin/Release/net6.0/linux-x64/publish ./
+RUN rm -rf SS14.Watchdog
+RUN mv publish/* ./
+RUN rm -rf publish
 RUN rm -rf /app/appsettings.yml
 
 EXPOSE 5000
@@ -24,4 +28,5 @@ EXPOSE 1212
 
 VOLUME ["/app/appsettings.yml", "/app/instances"]
 
-ENTRYPOINT ["dotnet", "SS14.Watchdog.dll"]
+ENTRYPOINT ["SS14.Watchdog"]
+#ENTRYPOINT ["dotnet", "SS14.Watchdog.dll"]
