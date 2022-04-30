@@ -28,9 +28,6 @@ RUN mv SS14.Watchdog/bin/Release/net6.0/debian.11-x64/publish ./ \
 EXPOSE 5000
 EXPOSE 1212
 
-ENV DOTNET_ROOT /root/.dotnet
-ENV PATH="/root/.dotnet:/app:${PATH}"
-
 VOLUME ["/app/appsettings.yml", "/app/instances"]
 
 ENTRYPOINT ["/app/SS14.Watchdog"]
