@@ -18,17 +18,21 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0
 
 # dependencies
 RUN apt-get update \
-  && apt-get install -y git python3 python-is-python3
+  && apt-get install -y git python3 python-is-python3 \
+  && adduser --disabled-password --home /home/container container
 
-WORKDIR /app
+USER container
+ENV USER=container HOME=/home/container
+
+WORKDIR /home/container
 COPY --from=build /app ./
+COPY ./entrypoint.sh /entrypoint.sh
 
 EXPOSE 5000
 EXPOSE 1212
 
-ENV DOTNET_ENVIRONMENT Production
-
 VOLUME ["/app/instances"]
 
-ENTRYPOINT ["/app/SS14.Watchdog"]
+CMD ["/bin/bash", "/entrypoint.sh"]
+#ENTRYPOINT ["/app/SS14.Watchdog"]
 #ENTRYPOINT ["dotnet", "SS14.Watchdog.dll"]
