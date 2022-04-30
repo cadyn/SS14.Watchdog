@@ -29,7 +29,7 @@ COPY --from=build /app ./
 EXPOSE 5000
 EXPOSE 1212
 
-VOLUME ["/app/appsettings.yml", "/app/instances"]
+VOLUME ["/app/instances"]
 
 ENTRYPOINT ["/app/SS14.Watchdog"]
 #ENTRYPOINT ["dotnet", "SS14.Watchdog.dll"]
