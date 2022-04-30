@@ -26,7 +26,7 @@ COPY --from=build /app ./
 #  && rm -rf publish \
 #  && rm -rf /app/appsettings.yml
 
-EXPOSE 5000
+EXPOSE 80
 EXPOSE 1212
 
 VOLUME ["/app/instances"]
