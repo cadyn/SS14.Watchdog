@@ -14,17 +14,10 @@ WORKDIR /source/SS14.Watchdog/
 RUN dotnet publish -c release -r linux-x64 -o /app --no-self-contained --no-restore
 
 # final stage/image
-#FROM ubuntu:jammy
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 
 WORKDIR /app
 COPY --from=build /app ./
-#COPY --from=build /app ./SS14.Watchdog/bin/Release/net6.0/linux-x64/publish
-#RUN mv SS14.Watchdog/bin/Release/net6.0/linux-x64/publish ./ \
-#  && rm -rf SS14.Watchdog \
-#  && mv publish/* ./ \
-#  && rm -rf publish \
-#  && rm -rf /app/appsettings.yml
 
 EXPOSE 80
 EXPOSE 1212
