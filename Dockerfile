@@ -26,7 +26,7 @@ ENV USER=container HOME=/home/container
 
 WORKDIR /home/container
 COPY --from=build /app ./
-COPY entrypoint.sh /entrypoint.sh
+COPY startup.sh /entrypoint.sh
 
 EXPOSE 5000
 EXPOSE 1212
